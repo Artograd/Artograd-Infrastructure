@@ -67,7 +67,7 @@ jobs:
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: ${{ steps.env-name.outputs.environment }}-infra
-          template: cloudformation-templates/infrastructure.yml
+          template: cloudformation/infrastructure.yml
           role-arn: arn:aws:iam::${{ steps.creds.outputs.aws-account-id }}:role/github-actions-cloudformation-stack-role
           no-fail-on-empty-changeset: "1"
           parameter-overrides: >-
@@ -127,7 +127,7 @@ jobs:
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: ${{ needs.deploy-infrastructure.outputs.env-name }}-webapp
-          template: cloudformation-templates/service.yaml
+          template: cloudformation/service.yaml
           role-arn: arn:aws:iam::${{ steps.creds.outputs.aws-account-id }}:role/github-actions-cloudformation-stack-role
           parameter-overrides: >-
             EnvironmentName=${{ needs.deploy-infrastructure.outputs.env-name }},

@@ -62,14 +62,14 @@ jobs:
           SUBNET_2=`aws ec2 describe-subnets --filters "Name=vpc-id,Values=$VPC_ID" "Name=default-for-az,Values=true" --query 'Subnets[1].SubnetId' --output text`
           echo "::set-output name=subnet-two::$SUBNET_2"
 
-#      - name: Deploy infrastructure with CloudFormation
-#        id: infrastructure-stack
-#        uses: aws-actions/aws-cloudformation-github-deploy@v1
-#        with:
-#          name: ${{ steps.env-name.outputs.environment }}-infra
-#          template: cloudformation/infrastructure.yaml
-#          role-arn: arn:aws:iam::${{ steps.creds.outputs.aws-account-id }}:role/github-actions-cloudformation-stack-role
-#          no-fail-on-empty-changeset: "1"
+      - name: Deploy infrastructure with CloudFormation
+        id: infrastructure-stack
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: ${{ steps.env-name.outputs.environment }}-infra
+          template: cloudformation/infrastructure.yaml
+          role-arn: arn:aws:iam::${{ steps.creds.outputs.aws-account-id }}:role/github-actions-cloudformation-stack-role
+          no-fail-on-empty-changeset: "1"
 #          parameter-overrides: >-
 #            EnvironmentName=${{ steps.env-name.outputs.environment }},
 #            VPC=${{ steps.vpc.outputs.vpc-id }},

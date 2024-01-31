@@ -69,7 +69,7 @@ jobs:
           name: ${{ steps.env-name.outputs.environment }}-infra
           template: cloudformation/infrastructure.yaml
           role-arn: arn:aws:iam::${{ steps.creds.outputs.aws-account-id }}:role/github-actions-cloudformation-stack-role
-          no-fail-on-empty-changeset: "0"
+          no-fail-on-empty-changeset: true
           parameter-overrides: >-
             EnvironmentName=${{ steps.env-name.outputs.environment }},
             VPC=${{ steps.vpc.outputs.vpc-id }},

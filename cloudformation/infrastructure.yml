@@ -127,7 +127,7 @@ jobs:
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: ${{ needs.deploy-infrastructure.outputs.env-name }}-webapp
-          template: cloudformation-templates/service.yml
+          template: cloudformation-templates/service.yaml
           role-arn: arn:aws:iam::${{ steps.creds.outputs.aws-account-id }}:role/github-actions-cloudformation-stack-role
           parameter-overrides: >-
             EnvironmentName=${{ needs.deploy-infrastructure.outputs.env-name }},

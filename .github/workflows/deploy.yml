@@ -69,12 +69,12 @@ jobs:
           name: ${{ steps.env-name.outputs.environment }}-infra
           template: cloudformation/infrastructure.yaml
           role-arn: arn:aws:iam::${{ steps.creds.outputs.aws-account-id }}:role/github-actions-cloudformation-stack-role
-          no-fail-on-empty-changeset: "1"
-#          parameter-overrides: >-
-#            EnvironmentName=${{ steps.env-name.outputs.environment }},
-#            VPC=${{ steps.vpc.outputs.vpc-id }},
-#            PublicSubnetOne=${{ steps.vpc.outputs.subnet-one }},
-#            PublicSubnetTwo=${{ steps.vpc.outputs.subnet-two }}
+          no-fail-on-empty-changeset: "0"
+          parameter-overrides: >-
+            EnvironmentName=${{ steps.env-name.outputs.environment }},
+            VPC=${{ steps.vpc.outputs.vpc-id }},
+            PublicSubnetOne=${{ steps.vpc.outputs.subnet-one }},
+            PublicSubnetTwo=${{ steps.vpc.outputs.subnet-two }}
 
   # Build and deploy a Docker image to an ECS service through CloudFormation.
   #

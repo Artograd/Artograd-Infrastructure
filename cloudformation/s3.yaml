@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Resources:
+  ArtogradApiS3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: Artograd-API-S3-Bucket
+      AccessControl: Private
+      Tags:
+        - Key: Name
+          Value: Artograd-API-S3-Bucket
+
+Outputs:
+  S3BucketName:
+    Value: !Ref ArtogradApiS3Bucket
+    Description: "Name of the S3 bucket for storing Spring Boot JAR files"

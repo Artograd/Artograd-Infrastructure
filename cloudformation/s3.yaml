@@ -21,7 +21,7 @@ Resources:
     Properties:
       FunctionName: ArtogradApiSpringBootLambda
       Handler: com.artograd.aip.MyHandler::handleRequest
-      Role: !ImportValue LambdaExecutionRole
+      Role: !ImportValue github-actions-lambda-execution-role
       Runtime: java21
       MemorySize: 512
       Timeout: 30

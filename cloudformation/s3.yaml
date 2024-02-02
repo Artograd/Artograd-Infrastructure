@@ -33,8 +33,8 @@ Outputs:
   S3BucketName:
     Value: !Ref ArtogradApiS3Bucket
     Description: "Name of the S3 bucket for storing Spring Boot JAR files"
-  LambdaExecutionRole:
-    Description: The Lambda execution role
-    Value: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:role/${LambdaExecutionRole}'
-    Export:
-      Name: !Sub ${EnvironmentName}:LambdaExecutionRole
+#  LambdaExecutionRole:
+#    Description: The Lambda execution role
+#    Value: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:role/${LambdaExecutionRole}'
+#    Export:
+#      Name: !Sub ${EnvironmentName}:LambdaExecutionRole

@@ -26,7 +26,7 @@ Resources:
       MemorySize: 512
       Timeout: 30
       Code:
-        S3Bucket: Artograd-API-S3-Bucket
+        S3Bucket: !Ref ArtogradApiS3Bucket
         S3Key: artograd-api.jar
 
 Outputs:

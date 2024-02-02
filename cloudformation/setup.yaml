@@ -88,6 +88,8 @@ Resources:
         - arn:aws:iam::aws:policy/AmazonECS_FullAccess
         - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
         - arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess
+        - arn:aws:iam:aws:policy/AmazonS3FullAccess
+        - arn:aws:iam:aws:policy/AWSLambda_FullAccess
       Policies:
         - PolicyName: allow-pass-role-for-ecs-task-exec-role
           PolicyDocument:

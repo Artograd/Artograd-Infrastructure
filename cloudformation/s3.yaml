@@ -5,7 +5,7 @@ Resources:
     Type: 'AWS::S3::Bucket'
     Properties:
       BucketName: artograd-api-s3-bucket
-      AccessControl: PublicRead
+      AccessControl: BucketOwnerFullControl
       Tags:
         - Key: Name
           Value: Artograd-API-S3-Bucket

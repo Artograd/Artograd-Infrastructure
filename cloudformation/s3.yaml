@@ -1,8 +1,14 @@
 AWSTemplateFormatVersion: '2010-09-09'
 
+Parameters:
+  LambdaExecutionRole:
+    Type: String
+    Default: LambdaExecutionRole.Arn
+    Description: The name of the IAM role for ECS Task Execution
+
 Resources:
   ArtogradApiS3Bucket:
-    Type: 'AWS::S3::Bucket'
+    Type: AWS::S3::Bucket
     Properties:
       BucketName: artograd-api-s3-bucket
       AccessControl: BucketOwnerFullControl
@@ -11,11 +17,11 @@ Resources:
           Value: Artograd-API-S3-Bucket
 
   MyLambdaFunction:
-    Type: 'AWS::Lambda::Function'
+    Type: AWS::Lambda::Function
     Properties:
       FunctionName: ArtogradApiSpringBootLambda
       Handler: com.artograd.aip.MyHandler::handleRequest
-      Role: !GetAtt MyLambdaExecutionRole.Arn
+      Role: !Ref LambdaExecutionRole
       Runtime: java21
       MemorySize: 512
       Timeout: 30
@@ -23,28 +29,12 @@ Resources:
         S3Bucket: Artograd-API-S3-Bucket
         S3Key: artograd-api.jar
 
-  MyLambdaExecutionRole:
-    Type: 'AWS::IAM::Role'
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service: lambda.amazonaws.com
-            Action: 'sts:AssumeRole'
-      Policies:
-        - PolicyName: LambdaBasicExecutionPolicy
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: Allow
-                Action:
-                  - 'logs:CreateLogGroup'
-                  - 'logs:CreateLogStream'
-                  - 'logs:PutLogEvents'
-                Resource: '*'
 Outputs:
   S3BucketName:
     Value: !Ref ArtogradApiS3Bucket
     Description: "Name of the S3 bucket for storing Spring Boot JAR files"
+  LambdaExecutionRole:
+    Description: The Lambda execution role
+    Value: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:role/${LambdaExecutionRole}'
+    Export:
+      Name: !Sub ${EnvironmentName}:LambdaExecutionRole

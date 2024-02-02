@@ -25,8 +25,8 @@ Resources:
       Runtime: java21
       MemorySize: 512
       Timeout: 30
-      Code:
-        S3Bucket: !Ref ArtogradApiS3Bucket
+#      Code:
+#        S3Bucket: !Ref ArtogradApiS3Bucket
 #        S3Key: artograd-api.jar
 
 Outputs:

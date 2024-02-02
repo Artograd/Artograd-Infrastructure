@@ -27,7 +27,7 @@ Resources:
       Timeout: 30
       Code:
         S3Bucket: !Ref ArtogradApiS3Bucket
-        S3Key: artograd-api.jar
+#        S3Key: artograd-api.jar
 
 Outputs:
   S3BucketName:

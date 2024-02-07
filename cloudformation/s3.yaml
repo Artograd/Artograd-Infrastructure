@@ -10,7 +10,7 @@ Resources:
   ArtogradApiS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: artograd-api-s3-bucket
+      BucketName: artograd-api-s3-bucket1
       AccessControl: BucketOwnerFullControl
       Tags:
         - Key: Name
@@ -32,7 +32,7 @@ Resources:
 Outputs:
   S3BucketName:
     Value: !Ref ArtogradApiS3Bucket
-    Description: "Name of the S3 bucket for storing Spring Boot JAR files"
+    Description: "Name of the S3 bucket for storing Spring Boot ZIP files"
 #  LambdaExecutionRole:
 #    Description: The Lambda execution role
 #    Value: !Sub 'arn:${AWS::Partition}:iam::${AWS::AccountId}:role/${LambdaExecutionRole}'

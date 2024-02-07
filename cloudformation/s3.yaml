@@ -10,7 +10,7 @@ Resources:
   ArtogradApiS3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: artograd-api-s3-bucket
+      BucketName: artograd-api-bucket
       AccessControl: BucketOwnerFullControl
       Tags:
         - Key: Name

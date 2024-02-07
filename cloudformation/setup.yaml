@@ -36,6 +36,7 @@ Resources:
               - "ec2:DescribeVpcs"
               - "ec2:DescribeSubnets"
               - "ecr:GetAuthorizationToken"
+              - "lambda:CreateFunction"
             Effect: Allow
             Resource: "*"
           - Action: "cloudformation:DeleteStack"
